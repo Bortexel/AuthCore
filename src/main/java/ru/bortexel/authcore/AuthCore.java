@@ -9,8 +9,12 @@ import ru.bortexel.authcore.listeners.MoveListener;
 public final class AuthCore extends JavaPlugin {
     @Override
     public void onEnable() {
+        // Зарегистрировать слушателей
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new MoveListener(), this);
         pluginManager.registerEvents(new ConnectionListener(this), this);
+
+        // Выставить нужные игровые правила
+        new ServerPreparer(this.getServer()).prepare();
     }
 }
