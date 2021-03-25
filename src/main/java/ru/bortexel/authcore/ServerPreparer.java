@@ -1,5 +1,6 @@
 package ru.bortexel.authcore;
 
+import org.bukkit.Difficulty;
 import org.bukkit.GameRule;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -13,6 +14,8 @@ public class ServerPreparer {
 
     public void prepare() {
         for (World world : this.server.getWorlds()) {
+            world.setDifficulty(Difficulty.PEACEFUL);
+
             world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
             world.setGameRule(GameRule.COMMAND_BLOCK_OUTPUT, false);
             world.setGameRule(GameRule.DISABLE_RAIDS, true);
